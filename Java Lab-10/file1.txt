@@ -1,0 +1,2 @@
+this is word1 . word1 will change to word2.
+it will apply in whole file1.convert word1 to word2.
