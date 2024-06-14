@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab-4(part-c)</title>
+    <style>
+        hi{color: black;}
+    </style>
+</head>
+<body>
+    <form style="border: 10px solid blue;width: fit-content">
+        <table>
+            <caption style="color: grey;"><h2>Create Account</h2></caption>
+            <tr>
+                <td style="color: blue;">First Name*<br><input type="text" placeholder="enter your first name"></td>
+                <td style="color: blue;">Last Name*<br><input type="text" placeholder="enter your last name"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color: blue;">Email*<br><input type="email" placeholder="enter your email"></td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Password*<br><input type="password" placeholder="enter your password"></td>
+                <td style="color: blue;">Confirm Password*<br><input type="password" placeholder="enter your password again"></td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Gender<br><input type="radio" name="Gender"><hi>Male</hi><input type="radio" name="Gender"><hi>Female</hi></td>
+                <td style="color: blue;">Hobbies<br><input type="radio"><hi>Music</hi><input type="radio"><hi>Sports</hi><input type="radio"><hi>Travel</hi><input type="radio"><hi>Movies</hi></td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Soure of Income<br><select>
+                    <option>Unemployeed</option>
+                    <option>buissness</option>
+                    <option>job-private</option>
+                    <option>job-govt.</option>
+                    <option>pension</option>
+                    <option>other</option></td>
+                <td style="color: blue;">Income<br>
+                    <input type="range" min="20000" max="20000000" value="10000"></td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Upload Profile Picture<br><hi><input type="file"></hi></td>
+                <td style="color: blue;">Age<br><input type="number"></td>
+            </tr>
+            <tr><td  style="color: blue;" colspan="2">Bio<br><textarea cols="56" rows="5"></textarea></td></tr>
+            <tr>
+                <td colspan="6" align="right"><button type="submit">Create</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

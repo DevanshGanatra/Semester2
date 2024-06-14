@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            animation-duration: 4s;
+            animation-name: slidein;
+            width: 20%;
+            height: 20vh;
+            background-color: white;
+            border: 2px black solid;
+            animation-iteration-count: infinite;
+            animation-direction:reverse ;
+        }
+        span{
+            animation-name: slidetext;
+            animation-duration: 4s;
+            text-align: center;
+            width: 20%;
+            height: 5vh;
+            animation-iteration-count: infinite;
+            animation-direction:reverse ;
+        }
+        @keyframes slidein {
+            0% {margin-left: 0%;}
+            25% {margin-left: 1000px;margin-top: 0;}
+            50% {margin-left: 1000px;margin-top: 500px;}
+            75% {margin-left:0px; margin-top: 500px;}
+            100% {margin-left: 0px;margin-top: 0px;}
+        }
+        @keyframes slidetext {
+            0% {margin-left: 0%;}
+            25% {margin-left: 1000px;margin-top: 0;}
+            50% {margin-left: 1000px;margin-top: 716px;}
+            75% {margin-left:0px; margin-top: 716px;}
+            100% {margin-left: 0px;margin-top: 216px;}
+        }
+    </style>
+</head>
+<body>
+    <div><video style="width: 100%; height: 20vh;" src="../jethalal.mp4" controls></div>
+        <span style="text-align: center;">Level-3</span>    
+</body>
+</html>

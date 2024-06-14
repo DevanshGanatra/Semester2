@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media query</title>
+    <style>
+    *{
+        box-sizing:border-box
+    }
+    #one{
+         background-color: red;
+         float: left;
+         width: 50%;
+         height: 200px;
+         padding: 20px;
+         font-size: 35px;
+  }
+  #two{
+        background-color:blue;
+         float: left;
+         width: 50%;
+         height: 200px;
+         padding: 20px;
+         font-size: 35px;
+  }
+  #t{
+        background-color:cyan;
+         float: left;
+         width: 50%;
+         height: 200px;
+         padding: 20px;
+         font-size: 35px;
+  }
+  #o{
+        background-color:green;
+         float: left;
+         width: 50%;
+         height: 200px;
+         padding: 20px;
+         font-size: 35px;
+  }
+  @media (max-width:900px){
+    #one,#two,#o,#t{
+        width: 50%;
+    }
+  }
+  @media (max-width:900px) and (min-width:600px){
+    #one,#two,#o,#t{
+        width: 100%;
+    }
+  }
+
+  </style>
+</head>
+<body>
+      <div id="one">darshan</div>
+      <div id="two">university</div>
+      <div id="o">darshan</div>
+      <div id="t">university</div>
+</body>
+</html>

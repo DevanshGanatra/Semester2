@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            overflow: hidden;
+        }
+        .outline{
+            width: 100%;
+            height: 98vh;
+        }
+        .header{
+            width: 100%;
+            height: 8%;
+            background-color: black;
+        }
+        .vachlu{
+            width: 100%;
+            height: 84%;
+            background-color: white;
+        }
+        .footer{
+            width: 100%;
+            height: 8%;
+            background-color: black;
+        }
+        .content{
+            width: 60%;
+            margin-left: 20%;
+            margin-top: 0.8%;
+            height: 95%;
+          
+        }
+        .laal{
+            width: 100%;
+            height: 15%;
+            background-color: red;
+            border-bottom: 3px solid white;
+            text-align: center;
+            padding-top: 25px;
+            font-size: 20px;
+            font-family: sans-serif;
+            color: white;
+        }
+        .middle{
+            width: 100%;
+            height: 70%;
+        }
+        .blue{
+            width: 100%;
+            height: 15%;
+            background-color: rgb(62, 140, 189);
+            border-top: 6px white solid;
+            text-align: center;
+            padding-top: 23px;
+            font-size: 20px;
+            font-family: sans-serif;
+            color: white;
+            font-weight: 600;
+        }
+        .navigation{
+            width: 20%;
+            height: 100%;
+            background-color: darkblue;
+            border-right: 10px white solid; 
+            text-align: center;
+            padding-top: 150px;
+            font-size: 25px;
+            font-family: sans-serif;
+            color: white;
+            float: left;
+        }
+        .yellow{
+            width: 62%;
+            height: 100%;
+            background-color: rgb(221, 208, 19);
+            float: left;
+            text-align: center;
+            padding-top:150px ;
+            font-size: 25px;
+            font-family: sans-serif;
+            color: black;
+        }
+        .Sidebar{
+            width: 18%;
+            height: 60%;
+            float: right;
+            background-color: green;
+            border-left: 6px white solid;
+           padding-top: 80px;
+           text-align: center;
+           font-size: 25px;
+           color: white;
+        }
+        .med{
+            width: 18%;
+            height: 40%;
+            background-color:  rgb(221, 208, 19);
+           float: right;
+           border-top: 6px white solid ;
+        }
+        @media (max-width:1074px)
+        {
+            .navigation{
+                writing-mode: vertical-lr;
+                text-orientation: upright;
+                padding-top: 0;
+                display: flex;
+                align-items: center;
+            }
+            .Sidebar{
+                writing-mode: vertical-lr;
+                text-orientation: upright;
+                padding-top: 0;
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <div class="outline">
+       <div class="header"></div>
+       <div class="vachlu">
+        <div class="content">
+            <div class="laal">Header</div>
+            <div class="middle">
+                <div class="navigation">Navigation</div>
+                <div class="yellow">Content</div>
+                <div class="Sidebar">Sidebar</div>
+                <div class="med">
+                </div>
+            </div>
+            <div class="blue">Footer</div>
+        </div>
+       </div>
+       <div class="footer"></div> 
+     </div>
+</body>
+</html>

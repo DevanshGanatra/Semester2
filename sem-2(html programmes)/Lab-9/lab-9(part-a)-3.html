@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            animation-duration: 6s;
+            animation-name: slidein;
+            width: 20%;
+            height: 20vh;
+            background-color: white;
+            border: 2px black solid;
+            animation-delay: 2s;
+        }
+        @keyframes slidein {
+            0% {margin-left: 0%;}
+            25% {margin-left: 1000px;margin-top: 0;}
+            50% {margin-left: 1000px;margin-top: 500px;}
+            75% {margin-left:0px; margin-top: 500px;}
+            100% {margin-left: 0px;margin-top: 0px;}
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

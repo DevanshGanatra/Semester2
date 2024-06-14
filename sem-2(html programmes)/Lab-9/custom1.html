@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #d1,#d2,#d3{
+         width: 100px;
+         height: 100px;
+         float: left;
+         background-image: linear-gradient(red,green,red);
+         border-radius: 50%;
+         animation-name: box;
+         animation-duration: 2s;
+         animation-iteration-count: infinite;
+         animation-direction: alternate;
+      }
+      @keyframes box{
+        to{
+            transform: rotate(360deg);
+            margin-top: 500px;
+            margin-bottom: 0px;
+        }
+        from{
+            transform: rotate(0deg);
+        }
+      }
+    </style>
+</head>
+<body>
+      <div id="d1"></div>
+        <div id="d2"></div>
+        <div id="d3"></div>
+</body>
+</html>
