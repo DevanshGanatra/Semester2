@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Background Image</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg-image {
+            /* The image used */
+            background-image: url('https://via.placeholder.com/1920x1080');
+
+            /* Control the height of the image */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* Add the overlay color */
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg-image::after {
+            content: "";
+            background: rgba(0, 0, 0, 0.5); /* Black with transparency */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1; /* Keep the overlay behind the content */
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding-top: 60px;
+        }
+        .logo-overlay {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .card:hover .logo-overlay {
+    display: block;
+  }
+
+  .brand-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+    </style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="content">
+    <div class="container">
+        <h1 class="text-white">Welcome to My Website</h1>
+        <p class="text-white">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p class="text-white">Scroll down to see the content overlaying the fixed background image.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+              <div class="card no-border-card position-relative" style="width: 18rem;">
+                <img src="../skybag.png" class="card-img-top round-card-img" alt="School Bags" />
+                <div class="logo-overlay">
+                  <img src="../logoskybag.png" alt="Brand Logo 1" class="brand-logo" />
+                  <img src="../logoamericantourister.png" alt="Brand Logo 2" class="brand-logo" />
+                  <img src="../brand-logo3.png" alt="Brand Logo 3" class="brand-logo" />
+                  <!-- Add more logo images as needed -->
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-center">School Bags</p>
+                </div>
+              </div>
+            </div>
+            <!-- Repeat the same structure for other columns -->
+          </div>
+    </div>
+</div>
+
+</body>
+</html>

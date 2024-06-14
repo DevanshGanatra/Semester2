@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sadguru General Stores</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+              /* Edge, Internet Explorer 10+ */
+              body {
+            -ms-overflow-style: scrollbar;
+        }
+             /* Custom scrollbar styles */
+        /* WebKit browsers */
+        ::-webkit-scrollbar {
+            width: 22px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: orange;
+            border-radius: 10px;
+            border: 5px solid #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: darkorange;
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: orange #f1f1f1;
+        }
+      .bg-image {
+        background-image: url("../SadgurGenerelStoreImg.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
+      }
+      .bg-image::after {
+        content: "";
+        background: rgba(0, 0, 0, 0.5); /* Black with transparency */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1; /* Keep the overlay behind the content */
+      }
+      .centered-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: 4%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+      .dropdown-menu {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: #6c757d #e9ecef;
+      }
+      /* Firefox scrollbar styling */
+      .dropdown-menu::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .dropdown-menu::-webkit-scrollbar-track {
+        background-color: #e9ecef;
+      }
+
+      .dropdown-menu::-webkit-scrollbar-thumb {
+        background-color: #6c757d;
+        border-radius: 4px;
+      }
+      .round-card-img {
+        border-radius: 50%;
+        width: 200px; /* Adjust as needed */
+        height: 200px; /* Adjust as needed */
+        object-fit: cover; /* Ensures the image covers the box without distortion */
+        margin: auto; /* Center the image horizontally */
+        display: block; /* Ensures the image is treated as a block-level element */
+      }
+      .no-border-card {
+        border: none; /* Remove the border */
+        box-shadow: none; /* Optionally remove the box shadow */
+      }
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border: 0;
+        }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        padding-top: 60px;
+      }
+      .carousel-item {
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .carousel-item .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        .carousel-item .author {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .carousel-item .date {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+      .footer {
+            background: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+        .footer .social-icons a {
+            font-size: 20px;
+            margin-right: 15px;
+            color: #adb5bd;
+        }
+        .footer .social-icons a:hover {
+            color: #fff;
+        }
+        .card {
+    position: relative;
+  }
+
+  .brand-logo {
+    display: block;
+    width: 80px; /* Fixed width for logos */
+    height: auto; /* Automatically adjust height */
+    margin: 10px auto; /* Increased gap */
+  }
+
+  .logo-overlay {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+  }
+
+  .card:hover .logo-overlay {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .logo-overlay {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      box-shadow: none;
+      padding: 0;
+      margin-top: 10px;
+      margin-right: 2px;
+      background-color: transparent; /* Transparent background on mobile */
+    }
+
+    .card:hover .logo-overlay {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .brand-logo {
+      width: 70px; /* Smaller fixed width for logos on mobile */
+      margin: 5px; /* Adjusted gap */
+    }
+  }
+@media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Optional: Ensure specific containers don't show horizontal scrollbars */
+            .container, .row, .col {
+                overflow-x: hidden;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="bg-image">
+      <div class="centered-text">
+        <h1 class="h1">Welcome!</h1>
+        <p class="lead">
+          "Sadguru General Stores: Your Trusted Partner Since 2000 - Where
+          Customer Satisfaction Meets Quality!"
+        </p>
+        <button type="button" class="btn btn-outline-light">Click Here!</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top w-100">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Sadguru Generel Stores</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Categories
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">School Items</a></li>
+                    <li><a class="dropdown-item" href="#">Water Bottles</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Traveling Bags</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Kitchen Accecories</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >House Cleaning Accecories</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Bathroom Cleaning Accecories</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Raincoats & Umbrellas</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Store Timings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../milton1.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="../milton1.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="../milton1.png" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="h1 text-center">School Time</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../skybag.png" class="card-img-top round-card-img" alt="School Bags" />
+            <div class="logo-overlay">
+              <img src="../logohotshot.png" alt="Brand Logo" class="brand-logo" />
+              <img src="../logoamericantourister.png" alt="Brand Logo" class="brand-logo" />
+              <img src="../logosunbags.png" alt="Brand Logo" class="brand-logo" />
+              <img src="../logosnbags.png" alt="Brand Logo" class="brand-logo" />
+              <img src="../logoskybag.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">School Bags</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../bottle2.png" class="card-img-top round-card-img" alt="School Water Bottles" />
+            <div class="logo-overlay">
+              <img src="../logomilton.png" alt="Brand Logo" class="brand-logo" />
+              <img src="../logocello.png" alt="Brand Logo" class="brand-logo" />
+
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">School Water Bottles</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../lunchbox1.png" class="card-img-top round-card-img" alt="School Lunch Boxes" />
+            <div class="logo-overlay">
+              <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">School Lunch Boxes</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../compasbox1.png" class="card-img-top round-card-img" alt="School Compass Boxes" />
+            <div class="logo-overlay">
+              <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">School Compass Boxes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="h1 text-center">Traveling Bags</h1>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../suitcase1.png" class="card-img-top round-card-img" alt="Traveling Suitcases" />
+            <div class="logo-overlay">
+              <img src="../brand-logo1.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Traveling Suitcases</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../luggagebag1.png" class="card-img-top round-card-img" alt="Luggage Bags" />
+            <div class="logo-overlay">
+              <img src="../brand-logo2.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Luggage Bags</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../waistbag2.png" class="card-img-top round-card-img" alt="Waist Bags" />
+            <div class="logo-overlay">
+              <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Waist Bags</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../trackingbag.png" class="card-img-top round-card-img" alt="Traveling Backpacks" />
+            <div class="logo-overlay">
+              <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Traveling Backpacks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="h1 text-center">Water Bottles</h1>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../milton3.png" class="card-img-top round-card-img" alt="Thermosteel Bottles" />
+              <div class="logo-overlay">
+                <img src="../brand-logo1.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Thermosteel Bottles</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../cello1.png" class="card-img-top round-card-img" alt="Copper Bottles" />
+              <div class="logo-overlay">
+                <img src="../brand-logo2.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Copper Bottles</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../miltonset.png" class="card-img-top round-card-img" alt="Bottle Sets" />
+              <div class="logo-overlay">
+                <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Bottle Sets</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../miltonflasks.png" class="card-img-top round-card-img" alt="Thermosteel Flasks" />
+              <div class="logo-overlay">
+                <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Thermosteel Flasks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="h1 text-center">Kitchen Accessories</h1>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../containers1.png" class="card-img-top round-card-img" alt="Plastic containers" />
+              <div class="logo-overlay">
+                <img src="../brand-logo1.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Plastic containers</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../cupandsauccer2.png" class="card-img-top round-card-img" alt="Opalware" />
+              <div class="logo-overlay">
+                <img src="../brand-logo2.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Opalware</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../veggiecutter.png" class="card-img-top round-card-img" alt="Vegetable Cutters" />
+              <div class="logo-overlay">
+                <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Vegetable Cutters</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card no-border-card position-relative" style="width: 18rem;">
+              <img src="../glasses2.png" class="card-img-top round-card-img" alt="Glasses Set" />
+              <div class="logo-overlay">
+                <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center">Glasses Set</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="h1 text-center">For Your Home</h1>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../gala1.png" class="card-img-top round-card-img" alt="Brooms" />
+            <div class="logo-overlay">
+              <img src="../brand-logo1.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Brooms</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../mop.png" class="card-img-top round-card-img" alt="Cleaning Mops" />
+            <div class="logo-overlay">
+              <img src="../brand-logo2.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Cleaning Mops</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../bathroomset2.png" class="card-img-top round-card-img" alt="Bathroom Essentials" />
+            <div class="logo-overlay">
+              <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Bathroom Essentials</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../cloatstand.png" class="card-img-top round-card-img" alt="Cloth Stands" />
+            <div class="logo-overlay">
+              <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Cloth Stands</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="h1 text-center">Rainwears & Umbrellas</h1>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../zeelman.png" class="card-img-top round-card-img" alt="Mens Raincoats" />
+            <div class="logo-overlay">
+              <img src="../brand-logo1.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Mens Raincoats</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../zeelwoman.png" class="card-img-top round-card-img" alt="Womens Raincoats" />
+            <div class="logo-overlay">
+              <img src="../brand-logo2.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Womens Raincoats</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../kidsraincoat.png" class="card-img-top round-card-img" alt="Kids Raincoats" />
+            <div class="logo-overlay">
+              <img src="../brand-logo3.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Kids Raincoats</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card no-border-card position-relative" style="width: 18rem;">
+            <img src="../umbrella.png" class="card-img-top round-card-img" alt="Umbrellas" />
+            <div class="logo-overlay">
+              <img src="../brand-logo4.png" alt="Brand Logo" class="brand-logo" />
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">Umbrellas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <!-- Google Reviews Carousel Section -->
+    <section class="reviews py-5">
+      <div class="container">
+          <h2 class="text-center mb-4">What Our Customers Say</h2>
+          <div id="reviewsCarousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                      </div>
+                      <p>"It is an  amazing store,
+                        It has all type of schooling items like bags,  lunch box,  water bags etc..  With new variety"</p>
+                      <div class="author">Harsh Kathrani</div>
+                      <div class="date">Posted 6 years ago</div>
+                  </div>
+                  <div class="carousel-item">
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                      </div>
+                      <p>"A very nice store.
+                        Here you get quality items only, so you would be tension free about the quality of products😀 …"</p>
+                      <div class="author">Devansh Ganatra</div>
+                      <div class="date">Posted 2 years ago</div>
+                  </div>
+                  <div class="carousel-item">
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="bi bi-star"></i></i>
+                      </div>
+                      <p>"A good general store"</p>
+                      <div class="author">sarju jani</div>
+                      <div class="date">Posted 5 years ago</div>
+                  </div>
+              </div>
+              <a class="carousel-control-prev" href="#reviewsCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#reviewsCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          $('#reviewsCarousel').carousel({
+              interval: 3000 // Change the interval to 3000 milliseconds (3 seconds)
+          });
+      });
+  </script>
+<div class="container my-5">
+  <div class="row">
+    <div class="col text-center my-3">
+      <h1>About Us</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7 col-12 mb-4 mb-md-0">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.7805508341612!2d70.798691369505!3d22.31121763943383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c9f0886f197d%3A0x9dca7f20fd01b5b5!2sSadguru%20General%20Stores!5e0!3m2!1sen!2sin!4v1717825116244!5m2!1sen!2sin"
+        class="map-container"
+        style="border:0; width: 100%; height: 100%;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <div class="col-md-5 col-12">
+      <div class="row mb-3">
+        <div class="col-2 col-md-1 d-flex align-items-center">
+          <i class="bi bi-geo-alt-fill" style="font-size: 2rem; color: orange;"></i>
+        </div>
+        <div class="col-10 col-md-11">
+          <p class="h4">Our Store Address</p>
+          <p class="lead fs-6">Sadguru General Stores, In Sadguru Complex, Street No. 5/12, Besides Maruti Selection, Junction Plot, Rajkot, Gujarat 360001</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-2 col-md-1 d-flex align-items-center">
+          <i class="bi bi-envelope-at" style="font-size: 2rem; color: orange;"></i>
+        </div>
+        <div class="col-10 col-md-11">
+          <p class="h4">General Enquiries</p>
+          <p class="lead fs-6">sadgurugeneralstores@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-2 col-md-1 d-flex align-items-center">
+          <i class="bi bi-telephone" style="font-size: 2rem; color: orange;"></i>
+        </div>
+        <div class="col-10 col-md-11">
+          <p class="h4">Call Us</p>
+          <p class="lead fs-6">9909920918</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-2 col-md-1 d-flex align-items-center">
+          <i class="bi bi-clock" style="font-size: 2rem; color: orange;"></i>
+        </div>
+        <div class="col-10 col-md-11">
+          <p class="h4">Our Timings</p>
+          <p class="lead fs-6">Mon - Sat : 10:30 AM - 9:30 PM <br> Sun : 10:30 AM - 3:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer my-5">
+      <div class="container">
+          <div class="row">
+              <!-- Company Info -->
+              <div class="col-md-3">
+                  <h5>About Us</h5>
+                  <p>"Sadguru General Stores is your trusted destination for all your everyday essentials."</p>
+              </div>
+
+              <!-- Quick Links -->
+              <div class="col-md-3">
+                  <h5>Quick Links</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Shop</a></li>
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Contact</a></li>
+                  </ul>
+              </div>
+
+              <!-- Customer Service -->
+              <div class="col-md-3">
+                  <h5>Customer Service</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="#">FAQ</a></li>
+                      <li><a href="#">Shipping & Returns</a></li>
+                      <li><a href="#">Order Tracking</a></li>
+                      <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+              </div>
+
+              <!-- Connect With Us -->
+              <div class="col-md-3">
+                  <h5>Connect With Us</h5>
+                  <div class="social-icons">
+                      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://www.twitter.com" target="_blank"><i class="bi bi-twitter-x"></i> </a>
+                  </div>
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col text-center">
+                  <p>&copy; 2024 Sadguru General Stores. All rights reserved.</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+  </body>
+</html>
