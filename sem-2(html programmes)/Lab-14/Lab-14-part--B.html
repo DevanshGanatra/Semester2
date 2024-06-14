@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        *{
+            box-sizing: border-box;
+            
+        }
+        .container{
+            width: 85%;
+            height: 98vh;
+            background-image: linear-gradient(-45deg,white,lightpink,rgb(185, 241, 243));
+            padding-left: 18vh;
+            padding-right: 18vh;
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            margin-left: 12vh;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            
+        }
+        .sidephotos{
+            width: 4%;
+            height: 100%;
+            float: left;
+            margin-left: 3%;
+            display: flex;
+            align-content: space-evenly;
+            writing-mode: vertical-lr;
+         
+        }
+        .photosize{
+            width: 70%;
+            height: 4.5%;
+            margin: 4px;
+        }
+        .mainphoto{
+            width: 44%;
+            height: 80%;
+            float: left;
+        }
+        .restcontent{
+            width: 49%;
+            height: 100%;
+            float: left;
+            padding-left: 4%;
+            padding-top: 3%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="sidephotos">
+                <img src="../listicon.png" alt="" class="photosize" style="margin-top: 4%; width: 60%; height: 4%;">
+                <img src="../search.png" alt="" class="photosize" style="margin-top: 4%; width: 60%;height: 4%;">
+                <img src="../profileiocn.png" alt="" class="photosize" style="margin-top: 65%;">
+                <img src="../basketicon.png" alt="" class="photosize" style="margin-top: 4%;">
+            </div>
+            <div class="mainphoto">
+                <img src="../back_to_college.png" alt="" style="width: 100%; margin-top: 38%;">
+            </div>
+            <div class="restcontent">
+                <a href="#" style="text-decoration: none;">< -- Back to bedroom</a>
+                <p style="font-family: sans-serif; color: lightgray; font-size: 12px; font-weight: bolder;">BEDROOM</p>
+                <b style="font-size: 20px; font-family: sans-serif">College Essentials</b>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

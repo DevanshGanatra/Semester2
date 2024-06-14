@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lab-14-B</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.Outer{
+			z-index: 1;
+			background-image: linear-gradient(to bottom right,lightblue,lightpink);
+			height: 750px;
+			padding-left: 125px;
+			padding-top: 100px;
+		}
+	    .Inner{
+			z-index: 5;
+			background-color: white;
+			width: 1250px;
+			height: 650px;
+		}
+		.ToolTip-AddOn{
+			position: absolute;
+			z-index: 10;
+			width: 1000px;
+			height: 100px;
+			background-color: white;
+			top: 610px;
+			left: 250px;
+			box-shadow: 1px 1px 1px 1px gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="Outer">
+		<div class="Inner">
+			<div style="float: left;"><img src="./college essentials.png" style="height: 300px;margin-top:90px;"></div>
+			<div style="float:right;margin-right: 450px;height: 600px;width: 265px;">
+				<a href="#" style="text-decoration: none;color: darkblue;"><b><-Back to bedroom</b></a>
+				<p style="color: lightgray;">BEDROOM</p>
+				<b style="font-size: 30px;">College Essentials</b>
+				<div>
+		<span class="fa fa-star" style="color:yellow"></span>
+		<span class="fa fa-star" style="color:yellow"></span>
+		<span class="fa fa-star" style="color:yellow"></span>
+		<span class="fa fa-star" style="color:yellow"></span>
+		<span class="fa fa-star" style="color: grey;"></span>
+		4.4(328 reviews)
+				</div>
+				<div>
+					<strong>Select Quality</strong>
+					<br>
+					<button style="float:left;border:1px solid black;width: 100px;text-align: center;background-color: ghostwhite;">Basic</button>
+					<button style="float:left;border:1px solid black;width:100px;text-align: center;background-color: ghostwhite;">Premium</button>
+				</div>
+				<br>
+				<br>
+				<div style="width:400px">
+					<strong>Style</strong>
+					<br>
+					<button style="border:1px solid black;border-radius: 5px;float: left;width: 80px;text-align: center;background-color: ghostwhite;">Minimal</button>
+					<button style="border:1px solid black;border-radius: 5px;margin-left: 5px;margin-right: 5px;float: left;width: 80px;text-align: center;background-color: ghostwhite;">Bohemian</button>
+					<button style="border:1px solid black;border-radius: 5px;float: left;margin-right: 5px;width: 80px;text-align: center;background-color: ghostwhite;">Floral</button>
+					<button style="border:1px solid black;border-radius: 5px;float: left;width: 80px;text-align: center;background-color: ghostwhite;">Other</button>
+				</div>
+					<br>
+					<div>
+						<strong>Color</strong>
+						<br>
+						<span style="height: 25px;width: 25px;border-radius: 50%;display: inline-block;background-color: turquoise;"></span>
+  						<span style="height: 25px;width: 25px;border-radius: 50%;display: inline-block;background-color: black;"></span>
+  						<span style="height: 25px;width: 25px;border-radius: 50%;display: inline-block;background-color: ghostwhite;border:1px solid black;"></span>
+		  				<span style="height: 25px;width: 25px;border-radius: 50%;display: inline-block;background-color: white;border:1px solid black;"></span>
+				</div>
+				<br>
+				<div>
+					<strong>Size</strong>
+					<br>
+					<button style="float:left;text-align: center;border-radius: 10px;width: 70px;border: 1px solid black;">Twin XL</button>
+					<button style="float:left;text-align: center;border-radius: 10px;width: 70px;border: 1px solid black;margin-left: 5px;">Full</button>
+				</div>
+				<br>
+				<br>
+				<div>
+					<div style="float:left">What's inside</div>
+					<div style="float:left;margin-left:40px">Reviews</div>
+					<div style="float:right">FAQs</div>
+				</div>
+				<br>
+				<div>
+				<hr style="width:40%;float: left;background-color: blue;height: 2px;border: none;display: inline-block;">
+				<hr style="width: 60%;float: left;background-color: black;height: 1px;border: none;display: inline-block;">
+				</div>
+				<div style="width: 100%;">
+					<strong>Customizable Items</strong>
+					<br>
+					<div style="float: left;display: inline-block;">
+					<img src="./js.png" style="float:left;height:207px;width: 90px;margin-left:-5px;">
+				</div>
+				<div style="float:left;display: inline-block;padding-top: 20px;">
+					<strong>Blush Push Comforter</strong>
+					<br>
+					See product details
+				</div>
+				</div>
+		</div>
+	</div>
+	<div class="ToolTip-AddOn">
+			<div style="float: left;height:100px;width: 110px;display: inline-block;"><img src="./guitar.png" style="width:60px;height: 60px;margin-top: 20px;margin-left: 50px;"></div>
+			<div style="float:left;padding-left: 20px;height: 100px;display: inline-block;padding-top: 20px;"><b>College Essentials</b>
+					<br>
+					Everything you need for freshman year.
+			</div>
+			<div style="float: left;display: inline-block;padding-top: 20px;">
+				<strong style="margin-left: 50px;">Add Ons</strong>
+				<br>
+				
+				<button style="background-color: white;margin-left: 50px;height: 30px;width: 30px;border: 1px solid black;text-align: center;padding-top: 5px;">+</button>
+			</div>
+			<div style="float:left;font-size:20px;display:inline-block;margin-left: 150px;margin-top: 35px;">$195</div>
+			<div style="float:left;display:inline-block;margin-left: 20px;"><button style="background-color: darkblue;color: white;height: 50px;text-align: center;width: 250px;border-radius: 5px;margin-top: 25px;"><b>Add to Cart(2)</b></button></div>
+	</div>
+</body>
+</html>

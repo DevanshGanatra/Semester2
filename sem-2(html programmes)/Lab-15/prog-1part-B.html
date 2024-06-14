@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Background</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Style to make video fill entire container */
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1; /* Change the opacity value as needed (0.0 to 1.0) */
+    }
+    .content {
+      width: 100%;
+      position: absolute;
+      top: 300;
+      left: 600;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Make the container fill the entire viewport height */
+      color: #fff; /* Text color */
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Video Background Container -->
+  <div class="container-fluid p-0">
+    <video autoplay muted  loop id="video-background">
+      <!-- Add multiple source elements for different video formats -->
+      <source src="../topgun.mp4" type="video/mp4">
+      <!-- Add more source elements if needed -->
+      Your browser does not support the video tag.
+    </video>
+
+    
+    <!-- Content -->
+    <div class="content">
+      <!-- Your content goes here -->
+      <h1 class="h1">Welcome!</h1>
+      <p class="lead">
+        This is a lead paragraph. It stands out from regular paragraphs.
+        <button type="button" class="btn btn-outline-light">Light</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
